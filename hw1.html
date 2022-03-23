@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script>
+        function quest0() {
+            let input = prompt('초 단위 시간을 입력하세요')
+            minutes = parseInt(input/60)
+            seconds = input%60
+
+            console.log(`${minutes} 분 ${seconds} 초입니다.`)
+
+        }
+
+        function quest1() {
+            
+            let x1 = prompt('첫 번째 점의 x좌표를 입력하세요')         
+            let y1 = prompt('첫 번째 점의 y좌표를 입력하세요')   
+            let x2 = prompt('두 번째 점의 x좌표를 입력하세요')   
+            let y2 = prompt('두 번째 점의 y좌표를 입력하세요')     
+            let p1 = { x : x1 , y : y1}
+            let p2 = { x : x2 , y : y2}
+
+            let distance = getDist(p1, p2); 
+            console.log(distance);
+
+        }
+
+        function getDist(p1,p2) { 
+            let dist = Math.sqrt((p1.x-p2.x)**2+(p1.y-p2.y)**2)
+            console.log('Getting distance using getDist() func')
+
+            return dist
+
+        }
+
+        function quest2(str) {  
+            toUpperStr=str.toUpperCase()
+
+            console.log(toUpperStr)
+        
+        }
+
+        function quest3() {
+         
+            let num1 = Number(prompt('첫 번째 숫자를 입력하세요'))
+            let oper = prompt('연산자를 입력하세요')
+            let num2 = Number(prompt('두 번째 숫자를 입력하세요'))
+
+            var answer = operate(num1, oper, num2); 
+            console.log("정답은 %d입니다.", answer);
+        }
+
+        function operate(num1, oper, num2) { 
+
+            switch(oper) {
+                case '+' : 
+                    return num1 + num2
+                    break
+                case '-' : 
+                    return num1 - num2
+                    break
+                case '*' : 
+                    return num1 * num2
+                    break
+                case '/' : 
+                    return num1 / num2
+                    break
+                case '%' : 
+                    return num1 % num2
+                    break
+                case '**' : 
+                    return num1 ** num2
+                    break
+            }
+
+        }
+
+        function quest4() {
+            let randNum=Math.floor(Math.random()*3);
+            candidate=['가위','바위','보']
+            computer=candidate[randNum]
+
+            let user = prompt('가위 바위 보!')
+            console.log(`컴퓨터: ${computer}`)
+            
+            switch (user) {
+                case '가위' :
+                    switch (computer) {
+                        case '가위':
+                            console.log('무승부!')
+                            break
+                        case '바위':
+                            console.log('컴퓨터 승리!')
+                            break
+                        case '보':
+                            console.log('사용자 승리!')
+                            break
+
+                    }
+                    break
+                
+                case '바위':
+                    switch (computer) {
+                        case '가위':
+                            console.log('사용자 승리!')
+                            break
+                        case '바위':
+                            console.log('무승부!')
+                            break
+                        case '보':
+                            console.log('컴퓨터 승리!')
+                            break
+
+                    }
+                    break
+                case '보':
+                    switch (computer) {
+                        case '가위':
+                            console.log('컴퓨터 승리!')
+                            break
+                        case '바위':
+                            console.log('사용자 승리!')
+                            break
+                        case '보':
+                            console.log('무승부!')
+                            break
+                    }
+                    break
+            }
+            
+        }
+
+
+        function quest5() {
+            str = prompt('문자열을 입력하세요') 
+            console.log(myReverse(str));
+        }
+
+        function myReverse(str) {
+            let reverseStr=''
+            for (let i = str.length - 1; i >= 0 ; i--){
+                reverseStr+=str[i]
+            }
+
+            return reverseStr
+
+        }
+
+        function quest6() {
+            let input = prompt('숫자를 입력하세요')
+
+            while (true) {
+                if (input < 0 ) {
+                    console.log('끝!')
+                    break
+                } else if(input % 2 == 0){
+                    input = prompt('숫자를 입력하세요')
+                } else {
+                    console.log(`${input}를 입력하셨네요.`)
+                    input = prompt('숫자를 입력하세요')
+                }
+
+            }
+        }
+
+        function quest7(){
+            let str = prompt('문자열을 입력해주세요')
+            str_split=str.split(' ') //단어 구별
+
+            let new_str=''
+            for (let word of str_split) {
+                x=word[0].toUpperCase() //단어 별 첫 글자 추출
+                new_str+=x
+                }
+
+            console.log(new_str)
+
+        }
+
+        let testStr = 'My name is mymy. Your name is youryour. His name is hishis. Her name is herher. So, my, your, his, her, name will be mymyyouryourhishisherehr.';
+        
+
+        function quest8(str){        
+            str=str.replace(/[.,]/gim,'') //특수문자 제거
+
+            arr = str.split(' ')
+            let remove_arr = [...new Set(arr)] // 중복 제거
+
+            for(let word of remove_arr.sort() ) {
+                console.log(word)
+            }
+            
+        }
+
+        let longStr = "Computer engineering has been rapidly changed than any other academic disciplines; these changes are immediately reflected in the industrial field.";
+        
+
+        function quest9(str){
+            str=str.replace(/[.,; ]/gim,'') //특수문자 및 공백 제거
+            arr= [...new Set(str)] //문장에 포함된 알파벳 추출
+        
+            let count = {}
+
+            for (x of arr) { 
+                count[x]=0
+            }
+
+            for (x of str){ //알파벳 별 갯수 확인
+                count[x]+=1
+            }
+
+            for (x of arr){
+                console.log(`${x} : ${count[x]}`)
+            }
+
+                        
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
